@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+
+{% block title %} Home {% endblock title%}
+
+{% block content %}
+
+
+<div class="row">
+    <h4> <span class="badge bg-secondary">List of Songs</span></h4>
+    &nbsp;
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_artist' %}"> Add New Artist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_song' %}">Add New Song</a>
+        </li>
+    </ul>
+   
+    <div>
+        {% if songs %}
+        <table class="table table-bordered striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Artist Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Album</th>
+                    <th scope="col">Release Year</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for song in songs %}
+                <tr>
+                    <td>{{song.artistName}}</td>
+                    <td>{{song.title}}</td>
+                    <td>{{song.genre}}</td>
+                    <td>{{song.album}}</td>
+                    <td>{{song.release_year}}</td>
+                    <td>
+                        <a href="song-details/{{song.id}}" class="btn btn btn-success" type="button"><i
+                                class="bi bi-pencil"></i></a>
+                        <a href="song-delete/{{artist.id}}" class="btn btn btn-danger" type="button"><i
+                                class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        No songs found in database
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
