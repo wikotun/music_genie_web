@@ -4,18 +4,24 @@
 {% block title %} Add Song {% endblock title%}
 
 {% block content %}
-<h4>Add New Song</h4>
 
 
+<div class="card">
+    <div class="card-header card-header-secondary">
+        <h4 class="card-title">Add Song</h4>
+    </div>
 
-<form method="POST" novalidate>
-    {% csrf_token %}
+    <div class="card-body">
+        <form method="POST" novalidate>
+            {% csrf_token %}
 
-    {{ form|crispy }}
+            {{ form|crispy }}
 
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="{% url 'songs' %}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'songs' %}" class="btn btn-secondary">Cancel</a>
 
-</form>
+        </form>
+    </div>
+</div>
 {% endblock content %}

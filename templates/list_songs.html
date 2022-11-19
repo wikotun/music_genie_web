@@ -5,19 +5,22 @@
 {% block content %}
 
 
-<div class="row">
-    <h4> <span class="badge bg-secondary">List of Songs</span></h4>
-    &nbsp;
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_artist' %}"> Add New Artist</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_song' %}">Add New Song</a>
-        </li>
-    </ul>
-   
-    <div>
+<div class="card">
+    <div class="card-header card-header-secondary">
+        <h4 class="card-title">List of Songs</h4>
+    </div>
+
+    <div class="card-body">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_artist' %}"> Add New Artist</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_song' %}">Add New Song</a>
+            </li>
+        </ul>
+
+
         {% if songs %}
         <table class="table table-bordered striped table-hover">
             <thead>
@@ -51,6 +54,7 @@
         {% else %}
         No songs found in database
         {% endif %}
+
     </div>
 </div>
 {% endblock content %}

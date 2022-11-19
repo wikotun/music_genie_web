@@ -1,27 +1,26 @@
 {% extends '_base.html' %}
-
 {% block title %} Home {% endblock title%}
-
 {% block content %}
 
 
-<div class="row">
-    <h4> <span class="badge bg-secondary">List of Artists</span></h4>
-    &nbsp;
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'add_artist' %}"> Add New Artist</a>
-        </li>
+<div class="card">
+    <div class="card-header card-header-secondary">
+        <h4 class="card-title">Artists</h4>
+    </div>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'add_song' %}">Add New Song</a>
-        </li>
-    </ul>
+    <div class="card-body">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'add_artist' %}"> Add New Artist</a>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_song' %}">Add New Song</a>
+            </li>
+        </ul>
 
-  &nbsp;
-    <div>
-        {% if artists %}
+        <div>
+            {% if artists %}
             <table class="table table-bordered striped table-hover">
                 <thead>
                     <tr>
@@ -42,36 +41,39 @@
                         <td>{{artist.website}}</td>
                         <td>{{artist.label}}</td>
                         <td>
-                            <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i class="bi bi-pencil"></i></a>
-                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>
+                            <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i
+                                    class="bi bi-pencil"></i></a>
+                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete {{artist.name}} ?
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="artist-delete/{{artist.id}}" type="button" class="btn btn-primary">Yes</a>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                              Are you sure you want to delete {{artist.name}} ?
-                            </div>
-                            <div class="modal-footer">
-                              <a href="artist-delete/{{artist.id}}" type="button" class="btn btn-primary">Yes</a>
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                            </div>
-                          </div>
                         </div>
                     </div>
                     {% endfor %}
                 </tbody>
             </table>
-
-            
-        {% else %}
-            No artist data found in database
-        {% endif %}
+            {% else %}
+                No artist data found in database
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock content %}

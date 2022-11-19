@@ -21,7 +21,8 @@ class ArtistCreateView(CreateView):
     template_name = 'add_artist.html'
     success_url = reverse_lazy('artists')
 
-class ArtistUpdateView(UpdateView): 
+
+class ArtistUpdateView(UpdateView):
     model = Artist
     form_class = ArtistForm
     template_name = 'edit_artist.html'
@@ -58,3 +59,4 @@ def deleteSong(request, pk):
     song = Song.objects.get(id=pk)
     song.delete()
     return redirect('/songs')
+
