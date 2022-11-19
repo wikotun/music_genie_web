@@ -11,6 +11,12 @@ urlpatterns = [
     path('artist-delete/<int:pk>', deleteArtist,name='delete_artist'),
 
 
+
+
+
+
+
+
     path('songs',SongListView.as_view(),name='songs'),
     path('add_song',SongCreateView.as_view(),name='add_song'),
     path('song-details/<int:pk>', SongUpdateView.as_view()),
