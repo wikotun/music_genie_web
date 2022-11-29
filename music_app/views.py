@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 from music_app.models import Artist, Song
 from music_app.forms import ArtistForm, SongForm
@@ -28,10 +28,9 @@ class ArtistUpdateView(UpdateView):
     template_name = 'edit_artist.html'
     success_url = reverse_lazy('artists')
 
-
 def deleteArtist(request, pk):
-    artist = Artist.objects.get(id=pk)
-    artist.delete()
+    data = get_object_or_404(Artist,id=pk) 
+    data.delete()
     return redirect('/artists')
 
 
@@ -56,7 +55,7 @@ class SongUpdateView(UpdateView):
 
 
 def deleteSong(request, pk):
-    song = Song.objects.get(id=pk)
-    song.delete()
+    data = get_object_or_404(Song,id=pk)
+    data.delete()
     return redirect('/songs')
 

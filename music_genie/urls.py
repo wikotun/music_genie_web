@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from music_app.views import (LandingPageView, ArtistCreateView, ArtistListView, ArtistUpdateView,
                              deleteArtist, SongCreateView, SongListView, SongUpdateView, deleteSong)
 
@@ -14,5 +16,8 @@ urlpatterns = [
     path('add_song', SongCreateView.as_view(), name='add_song'),
     path('song-details/<int:pk>', SongUpdateView.as_view()),
     path('song-delete/<int:pk>', deleteSong),
-
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

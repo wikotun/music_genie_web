@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from django.forms import ModelForm, TextInput, NumberInput
+from django.forms import ModelForm, TextInput, NumberInput,FileInput
 from .models import Artist, Song
 from crispy_forms.helper import FormHelper
 
@@ -18,7 +18,8 @@ class ArtistForm(ModelForm):
             'age': NumberInput(attrs={'class': "form-control", 'placeholder': 'Age'}),
             'nationality': TextInput(attrs={'class': "form-control", 'placeholder': 'Nationality'}),
             'website': TextInput(attrs={'required': False, 'class': "form-control", 'placeholder': 'Website'}),
-            'label': TextInput(attrs={'class': "form-control", 'placeholder': 'Record Label'})
+            'label': TextInput(attrs={'class': "form-control", 'placeholder': 'Record Label'}),
+            'image': FileInput(attrs ={'class':"img-thumbnail"})
         }
 
 
