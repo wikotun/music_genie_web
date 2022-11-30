@@ -1,9 +1,6 @@
 {% extends '_base.html' %}
-
 {% block title %} Home {% endblock title%}
-
 {% block content %}
-
 
 <div class="card">
     <div class="card-header card-header-secondary">
@@ -20,41 +17,37 @@
             </li>
         </ul>
 
-
         {% if songs %}
-        <table class="table table-bordered striped table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Artist Name</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Album</th>
-                    <th scope="col">Release Year</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for song in songs %}
-                <tr>
-                    <td>{{song.artistName}}</td>
-                    <td>{{song.title}}</td>
-                    <td>{{song.genre}}</td>
-                    <td>{{song.album}}</td>
-                    <td>{{song.release_year}}</td>
-                    <td>
-                        <a href="song-details/{{song.id}}" class="btn btn btn-success" type="button"><i
-                                class="bi bi-pencil"></i></a>
-                        <a href="song-delete/{{artist.id}}" class="btn btn btn-danger" type="button"><i
-                                class="bi bi-trash"></i></a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            <table class="table table-bordered striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Artist Name</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Release Year</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in songs %}
+                    <tr>
+                        <td>{{song.artistName}}</td>
+                        <td>{{song.title}}</td>
+                        <td>{{song.genre}}</td>
+                        <td>{{song.album}}</td>
+                        <td>{{song.release_year}}</td>
+                        <td>
+                            <a href="song-details/{{song.id}}" class="btn btn btn-success" type="button"><i class="bi bi-pencil"></i></a>
+                            <a href="song-delete/{{artist.id}}" class="btn btn btn-danger" type="button"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
-        No songs found in database
+            <p>No songs found in the database</p>
         {% endif %}
-
     </div>
 </div>
 {% endblock content %}

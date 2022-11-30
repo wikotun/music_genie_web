@@ -41,10 +41,8 @@
                         <td>{{artist.website}}</td>
                         <td>{{artist.label}}</td>
                         <td>
-                            <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i
-                                    class="bi bi-pencil"></i></a>
-                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>
+                            <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i class="bi bi-pencil"></i></a>
+                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
 
@@ -71,7 +69,7 @@
                 </tbody>
             </table>
             {% else %}
-                No artist data found in database
+                <p>No artist records found in the database </p>
             {% endif %}
         </div>
     </div>
