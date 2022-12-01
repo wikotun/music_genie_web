@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-{% block title %} Home {% endblock title%}
+{% block title %} List of Artists {% endblock title%}
 {% block content %}
 
 
@@ -30,6 +30,7 @@
                         <th scope="col">Website</th>
                         <th scope="col">Label</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@
                         <td>{{artist.nationality}}</td>
                         <td>{{artist.website}}</td>
                         <td>{{artist.label}}</td>
+                        <td>{% if artist.image%} <img src={{artist.image.url}} class="img-thumbnail"> {% endif %}</td>
                         <td>
                             <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i class="bi bi-pencil"></i></a>
                             <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>

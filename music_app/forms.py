@@ -1,10 +1,8 @@
 from django.forms import ModelForm
-from django.forms import ModelForm, TextInput, NumberInput,FileInput
+from django.forms import ModelForm, TextInput, NumberInput, FileInput
 from .models import Artist, Song
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (
-    Column, Layout, Row,
-)
+from crispy_forms.layout import Layout, HTML
 
 
 class ArtistForm(ModelForm):
@@ -18,21 +16,23 @@ class ArtistForm(ModelForm):
             'nationality': TextInput(attrs={'class': "form-control", 'placeholder': 'Nationality'}),
             'website': TextInput(attrs={'required': False, 'class': "form-control", 'placeholder': 'Website'}),
             'label': TextInput(attrs={'class': "form-control", 'placeholder': 'Record Label'}),
-            'image': FileInput(attrs ={'class':"img-thumbnail"})
+            'image': FileInput(attrs={'class': "img-thumbnail"})
         }
-        
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_tag = False
         self.helper.layout = Layout(
-            Row(
-                Column(
-                    "image", css_class="img-thumbnail",
-                ),
-            ),
+            'name',
+            'age',
+            'nationality',
+            'website',
+            'label',
+            'image',
+            HTML(
+                """{% if form.image %}<img class="img-thumbnail" src={{ MEDIA_URL }}{{ form.image.url }}>{% endif %}""")
         )
-
-
 
 class SongForm(ModelForm):
     class Meta:
@@ -42,4 +42,3 @@ class SongForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-

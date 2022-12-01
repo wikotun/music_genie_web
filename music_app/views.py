@@ -4,7 +4,6 @@ from music_app.models import Artist, Song
 from music_app.forms import ArtistForm, SongForm
 from django.urls import reverse_lazy
 
-
 class LandingPageView(TemplateView):
     template_name = 'home.html'
 
