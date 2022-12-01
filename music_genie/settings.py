@@ -1,6 +1,8 @@
 from pathlib import Path, os
+from django.core.management.utils import get_random_secret_key
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-sr3uh3!)e-06*yz+7fa2ko_#(y+5ktl4-zx+19uj8_^#7@zep@'
+SECRET_KEY=os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
