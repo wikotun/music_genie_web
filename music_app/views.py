@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect,get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView
 from music_app.models import Artist, Song
 from music_app.forms import ArtistForm, SongForm
 from django.urls import reverse_lazy
+
 
 class LandingPageView(TemplateView):
     template_name = 'home.html'
@@ -27,8 +28,16 @@ class ArtistUpdateView(UpdateView):
     template_name = 'edit_artist.html'
     success_url = reverse_lazy('artists')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(ArtistUpdateView, self).get_context_data(*args, **kwargs)
+        id  = self.kwargs['pk']
+        songs = Song.objects.filter(artist_id=id)
+        context['songs'] =  songs
+        return context
+
+
 def deleteArtist(request, pk):
-    data = get_object_or_404(Artist,id=pk) 
+    data = get_object_or_404(Artist, id=pk)
     data.delete()
     return redirect('/artists')
 
@@ -54,7 +63,6 @@ class SongUpdateView(UpdateView):
 
 
 def deleteSong(request, pk):
-    data = get_object_or_404(Song,id=pk)
+    data = get_object_or_404(Song, id=pk)
     data.delete()
     return redirect('/songs')
-
