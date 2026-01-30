@@ -1,4 +1,3 @@
-from django.forms import ModelForm
 from django.forms import ModelForm, TextInput, NumberInput, FileInput
 from .models import Artist, Song
 from crispy_forms.helper import FormHelper
@@ -31,7 +30,7 @@ class ArtistForm(ModelForm):
             'label',
             'image',
             HTML(
-                """{% if form.image %}<img class="img-thumbnail" src={{ MEDIA_URL }}{{ form.image.url }}>{% endif %}""")
+                """{% if form.instance.image %}<img class="img-thumbnail" src="{{ form.instance.image.url }}">{% endif %}""")
         )
 
 class SongForm(ModelForm):

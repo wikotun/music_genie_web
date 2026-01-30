@@ -1,9 +1,10 @@
-from pathlib import Path, os
+import os
+from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY=os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-DEBUG = os.getenv('DEBUG', 'False') == 'False'
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -89,4 +90,4 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'images')
-MEDIA_URL = 'images/'
+MEDIA_URL = '/images/'
