@@ -16,7 +16,7 @@ class ArtistListView(ListView):
 
 
 class ArtistCreateView(CreateView):
-    model = 'Artist'
+    model = Artist
     form_class = ArtistForm
     template_name = 'add_artist.html'
     success_url = reverse_lazy('artists')
@@ -39,7 +39,7 @@ class ArtistUpdateView(UpdateView):
 def deleteArtist(request, pk):
     data = get_object_or_404(Artist, id=pk)
     data.delete()
-    return redirect('/artists')
+    return redirect('/artists/')
 
 
 class SongListView(ListView):
@@ -65,4 +65,4 @@ class SongUpdateView(UpdateView):
 def deleteSong(request, pk):
     data = get_object_or_404(Song, id=pk)
     data.delete()
-    return redirect('/songs')
+    return redirect('/songs/')

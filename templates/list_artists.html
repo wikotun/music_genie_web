@@ -41,19 +41,19 @@
                         <td>{{artist.nationality}}</td>
                         <td>{{artist.website}}</td>
                         <td>{{artist.label}}</td>
-                        <td>{% if artist.image%} <img src={{artist.image.url}} class="img-thumbnail"> {% endif %}</td>
+                        <td>{% if artist.image%} <img src="{{artist.image.url}}" class="img-thumbnail"> {% endif %}</td>
                         <td>
                             <a href="artist-details/{{artist.id}}" class="btn btn btn-success" type="button"><i class="bi bi-pencil"></i></a>
-                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"><i class="bi bi-trash"></i></a>
+                            <a href="artist-delete/{{artist.id}}" class="btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{artist.id}}" type="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="deleteModal{{artist.id}}" tabindex="-1" aria-labelledby="deleteModalLabel{{artist.id}}"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                                    <h1 class="modal-title fs-5" id="deleteModalLabel{{artist.id}}">Delete Confirmation</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>

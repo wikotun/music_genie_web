@@ -19,7 +19,7 @@ class Artist(models.Model):
 
 
 class Song(models.Model):
-    GENRE_CHOICES = {
+    GENRE_CHOICES = [
         ('Afrobeats', 'Afrobeats'),
         ('Pop', 'Pop'),
         ('Jazz', 'Jazz'),
@@ -35,8 +35,8 @@ class Song(models.Model):
         ('House', 'House'),
         ('Instrumental', 'Instrumental'),
         ('Soul', 'Soul'),
-        ('Garage', 'Garage')
-    }
+        ('Garage', 'Garage'),
+    ]
 
     id = models.AutoField(primary_key=True)
     genre = models.CharField(max_length=60,choices = GENRE_CHOICES)
